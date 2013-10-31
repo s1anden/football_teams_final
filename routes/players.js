@@ -2,6 +2,10 @@ exports.newPlayer = function(req, res){
   
 };
 
+exports.listPlayers = function(req,res){
+	
+}
+
 exports.getPlayer = function(req, res){
   
 };

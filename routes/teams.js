@@ -2,6 +2,10 @@ exports.newTeam = function(req, res){
   
 };
 
+exports.listTeams = function(req,res){
+	
+}
+
 exports.getTeam = function(req, res){
   
 };
