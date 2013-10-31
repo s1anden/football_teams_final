@@ -13,3 +13,7 @@ app.configure(function(){
   app.use(express.static(path.join(__dirname, 'public')));	// Process static files
 });
 
+app.put('/teams/:team_id',teams.newTeam);
+app.get('/teams/:team_id',teams.getTeam);
+app.post('/teams/:team_id',teams.editTeam);
+app.delete('/teams/:team_id',teams.deleteTeam);
