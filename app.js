@@ -1,7 +1,8 @@
 var express = require('express'),
 	teams = require('./routes/teams'),
 	players = require('./routes/players'),
-	data = require('./models/database');
+	data = require('./models/database'),
+	path = require('path');
 
 var app = express();
 
@@ -25,3 +26,6 @@ app.get('/teams/:team_id/players',players.listPlayers);
 app.get('/teams/:team_id/players/:player_id',players.getPlayer);
 app.post('/teams/:team_id/players/:player_id',players.editPlayer);
 app.delete('/teams/:team_id/players/:player_id',players.deletePlayer);
+
+app.listen(44444);
+console.log("Express server running");
