@@ -1,6 +1,7 @@
 var express = require('express'),
 	teams = require('./routes/teams'),
-	players = require('./routes/players');
+	players = require('./routes/players'),
+	data = require('./models/database');
 
 var app = express();
 
