@@ -1,5 +1,9 @@
 exports.newTeam = function(req, res){
-  
+  // should check to see if team already exists 
+  // (we can just assume names must be unique?)
+
+  // then add team to database
+
 };
 
 exports.listTeams = function(req,res){
@@ -15,5 +19,6 @@ exports.editTeam = function(req, res){
 };
 
 exports.deleteTeam = function(req, res){
-  
+  // should also delete any players associated with that team
+
 };
