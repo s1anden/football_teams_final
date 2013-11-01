@@ -3,7 +3,9 @@ exports.newTeam = function(req, res){
   // (we can just assume names must be unique?)
 
   // then add team to database
-
+  req.body.name
+  req.body.coach
+  req.body.city
 };
 
 exports.listTeams = function(req,res){
