@@ -6,6 +6,7 @@ exports.newTeam = function(req, res){
   req.body.name
   req.body.coach
   req.body.city
+  res.render('main', { name: req.body.name, coach: req.body.coach, city: req.body.city });
 };
 
 exports.listTeams = function(req,res){
