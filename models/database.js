@@ -6,8 +6,18 @@ var data = [{
 },{
 		name: "Steelers",
 		players:["Ben Rothlesburger", "Troy Polomolu"],
-		coach:"Coach",
+		coach:"Mike Tomlin",
 		city:"Pittsburgh"
+},{
+		name: "Raiders",
+		players:["Terrelle Pryor", "Tracey Porter"],
+		coach:"Dennis Allen",
+		city:"Oakland"
+},{
+		name: "Patriots",
+		players:["Tom Brady", "Rob Gronkowski"],
+		coach:"Bill Bellichick",
+		city:"New England"
 }]
 
 exports.database = data;
