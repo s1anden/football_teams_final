@@ -10,8 +10,7 @@ exports.newTeam = function(req, res){
 };
 
 exports.listTeams = function(req,res){
-console.log(data)
-  res.render('main', { name: data[0].name, coach: data[0].coach, city: data[0].city, players: data[0].players });
+  res.render('main', { teams: data });
 }
 
 exports.getTeam = function(req, res){
