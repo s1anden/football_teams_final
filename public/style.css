@@ -75,3 +75,7 @@
       ul {
         list-style-type: none;
       }
+
+      br {
+        line-height: 2em;
+      }
