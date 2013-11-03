@@ -10,8 +10,7 @@ exports.newTeam = function(req, res){
 
   // then add team to database
   // res.render('main', { name: req.body.name, coach: req.body.coach, city: req.body.city });
-  console.log(req.body.obj)
-  res.render('main', { teams: data })
+
 };
 
 exports.listTeams = function(req,res){
