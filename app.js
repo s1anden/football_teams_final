@@ -19,6 +19,7 @@ app.configure(function(){
   app.use(express.static(__dirname + '/public'));	// Process static files
 });
 
+<<<<<<< HEAD
 // reading db file
 function readFile(filename, defaultData, callbackFn) {
   fs.readFile(filename, function(err, data) {
@@ -79,6 +80,11 @@ app.put("/teams", function(request, response) {
 });
 
 // list teams
+=======
+app.get('/', teams.listTeams);
+app.get('/create', teams.createTeam);
+app.put('/teams/:team_id',teams.newTeam);
+>>>>>>> 94f259fba863bcdffa98af17a7a60f29746d66ad
 app.get('/teams',teams.listTeams);
 
 // show one team
@@ -90,12 +96,20 @@ app.post('/teams/:team_id',teams.editTeam);
 // delete one team - delete contained in body
 app.delete('/teams/:team_id',teams.deleteTeam);
 
+<<<<<<< HEAD
 // players s
 app.put('/teams/:team_id/players/:player_id',players.newPlayer);
 app.get('/teams/:team_id/players',players.listPlayers);
 app.get('/teams/:team_id/players/:player_id',players.getPlayer);
 app.post('/teams/:team_id/players/:player_id',players.editPlayer);
 app.delete('/teams/:team_id/players/:player_id',players.deletePlayer);
+=======
+// app.put('/teams/:team_id/players/:player_id',players.newPlayer);
+// app.get('/teams/:team_id/players',players.listPlayers);
+// app.get('/teams/:team_id/players/:player_id',players.getPlayer);
+// app.post('/teams/:team_id/players/:player_id',players.editPlayer);
+// app.delete('/teams/:team_id/players/:player_id',players.deletePlayer);
+>>>>>>> 94f259fba863bcdffa98af17a7a60f29746d66ad
 
 app.listen(44445);
 console.log("Express server running on port 44445");

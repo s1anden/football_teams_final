@@ -1,10 +1,13 @@
 <!Doctype HTML>
 <html>
 <head>
+	<link rel="stylesheet" href="/style.css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<title>Football Teams</title>
 </head>
 
 <body>
+<<<<<<< HEAD
 	<h1>Football Teams</h1>
 	<div>
 	  <form id="addteamsform" action="javascript:addTeam()">
@@ -38,5 +41,19 @@
 	</div> -->
 	<script src="jquery-1.9.0.js"></script>
 	<script src="crud.js"></script>
+=======
+	<div class="container">
+		<h1>NFL Teams</h1>
+		 <% if(teams.length) { %>
+			<% teams.forEach(function(team) { %>
+				<h2>Name: <%= team.name %> </h2>
+				<h2>City: <%= team.city %> </h2>
+				<h2>Coach: <%= team.coach %> </h2>
+
+				<br>
+			<% }) %>
+		 <% } %>
+	</div>
+>>>>>>> 94f259fba863bcdffa98af17a7a60f29746d66ad
 </body>
 </html>
