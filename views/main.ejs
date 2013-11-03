@@ -3,21 +3,40 @@
 <head>
 	<title>Football Teams</title>
 </head>
+
 <body>
-	<h1>NFL Teams</h1>
+	<h1>Football Teams</h1>
+	<div>
+	  <form id="addteamsform" action="javascript:addTeam()">
+	    <div class="row">
+	      <label>Team:</label>  <input id="teamname-input" name="Team" type="text" placeholder="e.g. Steelers"/> 
+	    </div>
+	    <div class="row">
+	      <label>City:</label>  <input id="city-input" name="City" type="text" placeholder="e.g. Pittsburgh"/>
+	    </div>
+	    <div class="row">
+	      <label>Coach:</label>  <input id="coach-input" name="City" type="text" placeholder="e.g. Mike Tomlin"/>
+	    </div>
+	    <div class="row right">
+	      <input id="submitButton" name="Submit"  type="submit" value="Add Team"/>
+	    </div>
+	  </form>
+	</div> 
 	<br>
-	 <% if(teams.length) { %>
-		<% teams.forEach(function(team) { %>
-			<h2>Name: <%= team.name %> </h2>
-			<h2>City: <%= team.city %> </h2>
-			<h2>Coach: <%= team.coach %> </h2>
-			<h2>Players:</h2> 
-			<ul>
-				<% for(i = 0; i < team.players.length; i++) { %>
-					<li><%= team.players[i] %></li>
-				<% } %>
-			</ul>
-		<% }) %>
-	 <% } %>
+	<!-- <div>
+	  <form name="addplayersform" action="javascript:addPlayer()">
+	    <div class="row">
+	      <label>Player Name:</label>  <input id="playername-input" name="Player" type="text" placeholder="e.g. Ryan Kwok"/> 
+	    </div>
+	    <div class="row">
+	      <label>Team:</label>  <input id="team-input" name="Team" type="text" placeholder="e.g. Steelers"/>
+	    </div>
+	    <div class="row right">
+	      <input id="submitButton" name="Submit"  type="submit" value="Add Player"/>
+	    </div>
+	  </form>
+	</div> -->
+	<script src="jquery-1.9.0.js"></script>
+	<script src="crud.js"></script>
 </body>
 </html>

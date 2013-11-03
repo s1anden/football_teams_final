@@ -1,9 +1,11 @@
 var express = require('express'),
 	teams = require('./routes/teams'),
 	players = require('./routes/players'),
-	data = require('./models/database');
+  routes = require('./routes/slash'),
+	data = require('./models/database').database;
 	// path = require('path');
 
+var fs = require("fs");
 var app = express();
 
 app.configure(function(){
@@ -17,13 +19,78 @@ app.configure(function(){
   app.use(express.static(__dirname + '/public'));	// Process static files
 });
 
-app.get('/', teams.listTeams);
-app.put('/teams/:team_id',teams.newTeam);
+// reading db file
+function readFile(filename, defaultData, callbackFn) {
+  fs.readFile(filename, function(err, data) {
+    if (err) {
+      console.log("Error reading file: ", filename);
+      data = defaultData;
+    } else {
+      console.log("Success reading file: ", filename);
+    }
+    if (callbackFn) callbackFn(err, data);
+  });
+}
+
+// writing to db file
+function writeFile(filename, data, callbackFn) {
+  fs.writeFile(filename, data, function(err) {
+    if (err) {
+      console.log("Error writing file: ", filename);
+    } else {
+      console.log("Success writing file: ", filename);
+    }
+    if (callbackFn) callbackFn(err);
+  });
+}
+
+// index page
+app.get('/', routes.pathless);
+
+// new team
+// app.put('/teams',teams.newTeam);
+app.put("/teams", function(request, response) {
+  console.log("stuff in app.js"); 
+
+  var item = {"name": request.body.name,
+              "players": [],
+              "coach": request.body.coach,
+              "city": request.body.city};
+  console.log(item);
+
+  var successful = 
+      (item.name !== undefined) &&
+      (item.city !== undefined) &&
+      (item.players !== undefined) &&
+      (item.coach !== undefined);
+
+  if (successful) {
+    data.push(item);
+    writeFile("./models/database.js", JSON.stringify(data));
+    console.log(data);
+  } else {
+    item = undefined;
+  }
+
+  response.send({ 
+    item: item,
+    success: successful
+  });
+});
+
+// list teams
 app.get('/teams',teams.listTeams);
+
+// show one team
 app.get('/teams/:team_id',teams.getTeam);
+
+// update one team - post is contained in body
 app.post('/teams/:team_id',teams.editTeam);
+
+// delete one team - delete contained in body
 app.delete('/teams/:team_id',teams.deleteTeam);
 
+// players s
 app.put('/teams/:team_id/players/:player_id',players.newPlayer);
 app.get('/teams/:team_id/players',players.listPlayers);
 app.get('/teams/:team_id/players/:player_id',players.getPlayer);

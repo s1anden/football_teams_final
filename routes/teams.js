@@ -10,7 +10,7 @@ exports.newTeam = function(req, res){
 };
 
 exports.listTeams = function(req,res){
-  res.render('main', { teams: data });
+  res.render('teams', { teams: data });
 }
 
 exports.getTeam = function(req, res){
