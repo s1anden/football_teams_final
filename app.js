@@ -66,7 +66,7 @@ app.put("/teams", function(request, response) {
 
   if (successful) {
     data.push(item);
-    writeFile("./models/database.js", JSON.stringify(data));
+    writeFile("./models/database.js", "var data = " + JSON.stringify(data) + "\n exports.database = data;");
     console.log(data);
   } else {
     item = undefined;
