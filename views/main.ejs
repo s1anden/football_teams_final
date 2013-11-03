@@ -1,23 +1,27 @@
 <!Doctype HTML>
 <html>
 <head>
+	<link rel="stylesheet" href="/style.css">
 	<title>Football Teams</title>
 </head>
 <body>
-	<h1>NFL Teams</h1>
-	<br>
-	 <% if(teams.length) { %>
-		<% teams.forEach(function(team) { %>
-			<h2>Name: <%= team.name %> </h2>
-			<h2>City: <%= team.city %> </h2>
-			<h2>Coach: <%= team.coach %> </h2>
-			<h2>Players:</h2> 
-			<ul>
-				<% for(i = 0; i < team.players.length; i++) { %>
-					<li><%= team.players[i] %></li>
-				<% } %>
-			</ul>
-		<% }) %>
-	 <% } %>
+	<div class="container">
+		<h1>NFL Teams</h1>
+		<br>
+		 <% if(teams.length) { %>
+			<% teams.forEach(function(team) { %>
+				<h2>Name: <%= team.name %> </h2>
+				<h2>City: <%= team.city %> </h2>
+				<h2>Coach: <%= team.coach %> </h2>
+				<h2>Players:</h2> 
+				<ul>
+					<% for(i = 0; i < team.players.length; i++) { %>
+						<li><%= team.players[i] %></li>
+					<% } %>
+				</ul>
+				<br>
+			<% }) %>
+		 <% } %>
+	</div>
 </body>
 </html>
