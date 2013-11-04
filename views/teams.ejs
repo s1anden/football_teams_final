@@ -12,8 +12,26 @@
 			<h2>City: <%= team.city %> </h2>
 			<h2>Coach: <%= team.coach %> </h2>
 		<% }) %>
+		<% if (teams.length == 1) { %>
+			<div>
+	  			<form id="editform">
+	    <div class="row">
+	      <label>Team:</label>  <input id="teamname-input" name="Team" type="text" placeholder="e.g. Steelers"/> 
+	    </div>
+	    <div class="row">
+	      <label>City:</label>  <input id="city-input" name="City" type="text" placeholder="e.g. Pittsburgh"/>
+	    </div>
+	    <div class="row">
+	      <label>Coach:</label>  <input id="coach-input" name="City" type="text" placeholder="e.g. Mike Tomlin"/>
+	    </div>
+	    <div class="row right">
+	      <input id="submitButton" name="Submit"  type="submit" value="Add Team"/>
+	    </div>
+	  </form>
+	</div> 
+		<% } %>
 	<% } else { %>
 		<h2>There is no team by that name</h2>
-	 <% } %>
+	<% } %>
 </body>
 </html>
