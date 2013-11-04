@@ -56,6 +56,36 @@ function deletethis(id) {
   });
 }
 
+// add new team
+function editTeam(index){
+	console.log("working?");
+	console.log(index);
+	var index = index;
+	var updatedTeam = {};
+
+	console.log("updating team");	
+	var tn = $('#teamname-input').val();
+	var tc = $('#city-input').val();
+	var tco = $('#coach-input').val();
+
+	updatedTeam.name = tn;
+	updatedTeam.city = tc;
+	updatedTeam.coach = tco;
+
+	window.edit(tn, tco, tc, index);
+}
+// edit fcn
+function edit(name, coach, city, index) {
+	console.log(index);
+	console.log("running ajax stuff");	
+  $.ajax({
+    	url: "/teams/" + index,
+		type: "post",
+    	data: {"name": name, "city": city, "coach": coach, index:index},
+    	success: function(data) { location.reload() }
+  });
+}
+
 // 
 // function addPlayer(){
 // 	var newPlayer = {};

@@ -16,16 +16,18 @@ exports.listTeams = function(req,res){
   res.render('teams', { teams: data });
 }
 
-exports.getTeam = function(req, res){
+exports.getTeam = function(req, res){s
 	var url = req.url.split("/");
 	var id = url[2];
 	if (id >= data.length) {res.render('teams',{teams:false});};
-	var team = [data[id]];
-  	res.render('teams', {teams: team});
+ 	res.render('teams', {teams: [data[id]], index:id});
 };
 
 exports.editTeam = function(req, res){
-  
+  var url = req.url.split("/");
+  var id = url[2];
+  if (id >= data.length) {res.render('teams',{teams:false});};
+    res.render('teams', {teams: [data[id]], index:id});
 };
 
 exports.deleteTeam = function(req, res){
