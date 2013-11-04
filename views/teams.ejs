@@ -1,19 +1,24 @@
 <!Doctype HTML>
 <html>
 <head>
+	<link rel="stylesheet" href="style.css" />
+
 	<title>Football Teams</title>
 </head>
 <body>
-	<h1>NFL Teams</h1>
-	<br>
-	 <% if(teams.length) { %>
-		<% teams.forEach(function(team) { %>
-			<h2>Name: <%= team.name %> </h2>
-			<h2>City: <%= team.city %> </h2>
-			<h2>Coach: <%= team.coach %> </h2>
-		<% }) %>
-	<% } else { %>
-		<h2>There is no team by that name</h2>
-	 <% } %>
+	<div class="container">
+		<h1>Teams</h1>
+		<br>
+		 <% if(teams.length) { %>
+			<% teams.forEach(function(team) { %>
+				<h2>Name: <%= team.name %> </h2>
+				<h2>City: <%= team.city %> </h2>
+				<h2>Coach: <%= team.coach %> </h2>
+				<br>
+			<% }) %>
+		<% } else { %>
+			<h2>There is no team by that name</h2>
+		 <% } %>
+		</div>
 </body>
 </html>
