@@ -14,6 +14,16 @@
                     <h2>Name: <%= team.name %> </h2>
                     <h2>City: <%= team.city %> </h2>
                     <h2>Coach: <%= team.coach %> </h2>
+                    <h2>Players:</h2> 
+                    <% if (team.players.length == 0) { %>
+                        <ul><li>No players currently<li></ul>
+                    <% } else { %>
+                    <ul>
+                        <% for(i = 0; i < team.players.length; i++) { %>
+                            <li><%= team.players[i] %></li>
+                        <% } %>
+                    </ul>
+                    <% } %>
                     <br>
             <% }) %>
             <% if (teams.length == 1) { %>
@@ -32,10 +42,10 @@
                         <input id="submitButton" name="Submit"  type="submit" value="Edit Team"/>
                     </div>
                 </form>
-								<br>
-							  <form id="deleteForm" action="javascript:deleteTeam(<%= index %>)">
-							    <input name="Submit"  type="submit" value="Delete Team"/>
-							  </form>
+				<br>
+			  <form id="deleteForm" action="javascript:deleteTeam(<%= index %>)">
+			    <input name="Submit"  type="submit" value="Delete Team"/>
+			  </form>
             <% } %>
         <% } else { %>
                 <h2>Oops cant find the team you're looking for</h2>

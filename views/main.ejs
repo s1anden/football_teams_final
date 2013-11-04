@@ -7,39 +7,43 @@
 </head>
 
 <body>
-  <div class="container">
-	<h1>Football Teams</h1>
-	<div>
-	  <form id="addteamsform" action="javascript:addTeam()">
-	    <div class="row">
-	      <label>Team:</label>  <input id="teamname-input" name="Team" type="text" placeholder="e.g. Steelers"/> 
-	    </div>
-	    <div class="row">
-	      <label>City:</label>  <input id="city-input" name="City" type="text" placeholder="e.g. Pittsburgh"/>
-	    </div>
-	    <div class="row">
-	      <label>Coach:</label>  <input id="coach-input" name="City" type="text" placeholder="e.g. Mike Tomlin"/>
-	    </div>
-	    <div class="row right">
-	      <input id="submitButton" name="Submit"  type="submit" value="Add Team"/>
-	    </div>
-	  </form>
-	</div> 
-  </div>
-	<br>
-	<!-- <div>
-	  <form name="addplayersform" action="javascript:addPlayer()">
-	    <div class="row">
-	      <label>Player Name:</label>  <input id="playername-input" name="Player" type="text" placeholder="e.g. Ryan Kwok"/> 
-	    </div>
-	    <div class="row">
-	      <label>Team:</label>  <input id="team-input" name="Team" type="text" placeholder="e.g. Steelers"/>
-	    </div>
-	    <div class="row right">
-	      <input id="submitButton" name="Submit"  type="submit" value="Add Player"/>
-	    </div>
-	  </form>
-	</div> -->
+  	<div class="container">
+		<h1>Team Manager</h1>
+		<h2>Add Teams</h2>
+		<div>
+		  <form id="addteamsform" action="javascript:addTeam()">
+		    <div class="row">
+		      <label>Team:</label>  <input id="teamname-input" name="Team" type="text" placeholder="e.g. Steelers"/> 
+		    </div>
+		    <div class="row">
+		      <label>City:</label>  <input id="city-input" name="City" type="text" placeholder="e.g. Pittsburgh"/>
+		    </div>
+		    <div class="row">
+		      <label>Coach:</label>  <input id="coach-input" name="City" type="text" placeholder="e.g. Mike Tomlin"/>
+		    </div>
+		    <div class="row right">
+		      <input id="submitButton" name="Submit"  type="submit" value="Add Team"/>
+		    </div>
+		  </form>
+		</div> 
+
+		<br>
+		
+		<h2>Add Players</h2>
+		<div>
+		  <form name="addplayersform" action="javascript:addPlayer()">
+		    <div class="row">
+		      <label>Player Name:</label>  <input id="playername-input" name="Player" type="text" placeholder="e.g. Anthony Corletti"/> 
+		    </div>
+		    <div class="row">
+		      <label>Team:</label>  <input id="team-input" name="Team" type="text" placeholder="e.g. Steelers"/>
+		    </div>
+		    <div class="row right">
+		      <input id="submitButton" name="Submit"  type="submit" value="Add Player"/>
+		    </div>
+		  </form>
+		</div>
+	</div>
 	<script src="jquery-1.9.0.js"></script>
 	<script src="crud.js"></script>
 </body>

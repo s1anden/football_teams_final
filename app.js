@@ -150,9 +150,42 @@ app.delete('/teams/:team_id',function(request, response) {
 });
 
 // players
-app.put('/teams/:team_id/players/:player_id',players.newPlayer);
+app.put('/players', function(request, response) {
+  console.log("stuff in app.js"); 
+
+  var item = {"name": request.body.name,
+              "team": request.body.team};
+  console.log(item);
+
+  var teamnames = [];
+  for(var i=0; i<data.length; i++) {
+      teamnames.push(data[i].name);
+    }
+
+  var successful = 
+      (item.name !== undefined) &&
+      (item.team !== undefined && teamnames.indexOf(item.team) >= 0);
+
+  if (successful) {
+    for(var i=0; i<data.length; i++) {
+      if (data[i].name == item.team) {
+        data[i].players.push(item.name)
+      }
+    }
+    writeFile("./models/database.js", "var data = " + JSON.stringify(data) + "\n exports.database = data;");
+    console.log(data);
+  } else {
+    item = undefined;
+  }
+
+  response.send({ 
+    item: item,
+    success: successful
+  });
+});
+
 app.get('/teams/:team_id/players',players.listPlayers);
-app.get('/teams/:team_id/players/:player_id',players.getPlayer);
+app.get('/teams/:team_id/players/:player_id',players.getPlayer);  
 app.post('/teams/:team_id/players/:player_id',players.editPlayer);
 app.delete('/teams/:team_id/players/:player_id',players.deletePlayer);
 

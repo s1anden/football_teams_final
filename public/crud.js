@@ -3,7 +3,7 @@ debug = true;
 
 // Global datastore
 var teams = [];
-// var players = [];
+var players = [];
 
 // add new team
 function addTeam(){
@@ -28,7 +28,6 @@ function addTeam(){
 	$('#city-input').val("");
 	$('#coach-input').val("");
 }
-// add fcn
 function add(name, coach, city) {
 	console.log("running ajax stuff");	
   $.ajax({
@@ -57,7 +56,6 @@ function editTeam(index){
 
 	window.edit(tn, tco, tc, index);
 }
-// edit fcn
 function edit(name, coach, city, index) {
 	console.log(index);
 	console.log("running ajax stuff");	
@@ -75,7 +73,6 @@ function deleteTeam(id){
 	console.log(id);		
 	window.deletethis(id);
 }
-
 function deletethis(id) {
 	console.log("running ajax-delete stuff");	
 	console.log(id);	
@@ -86,24 +83,30 @@ function deletethis(id) {
   });
 }
 
-// 
-// function addPlayer(){
-// 	var newPlayer = {};
+// add player
+function addPlayer(){
+	var newPlayer = {};
 
-// 	console.log("adding new player");	
-// 	var pn = $('#playername-input').val();
-// 	var pt = $('#team-input').val();
+	console.log("adding new player");	
+	var pn = $('#playername-input').val();
+	var pt = $('#team-input').val();
 
-// 	newPlayer.name = pn;
-// 	newPlayer.team = pt;
+	newPlayer.name = pn;
+	newPlayer.team = pt;
 
-// 	print(newPlayer);
+	players.push(newPlayer);
+	window.add(pn, pt);
 
-// 	players.push(newPlayer);
-// 	window.add(pn, pt);
-// 	refreshDOM();
-
-// 	// Clear Inputs
-// 	$('#playername-input').val("");
-// 	$('#team-input').val("");
-// }
+	// Clear Inputs
+	$('#playername-input').val("");
+	$('#team-input').val("");
+}
+function add(name, team) {
+	console.log("running ajax stuff");	
+  $.ajax({
+    	url: "/players",
+		type: "put",
+    	data: {"name": name, "team": team},
+    	success: function(data) { }
+  });
+}

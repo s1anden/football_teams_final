@@ -1,8 +1,8 @@
 var data = require("../models/database.js").database
 
-exports.createTeam = function(req, res){
-	res.render('create');
-};
+// exports.createTeam = function(req, res){
+// 	res.render('create');
+// };
 
 exports.newTeam = function(req, res){
   // should check to see if team already exists 
