@@ -33,8 +33,25 @@ function add(name, coach, city) {
 	console.log("running ajax stuff");	
   $.ajax({
     	url: "/teams",
-		type: "put",
+			type: "put",
     	data: {"name": name, "players": [], "city": city, "coach": coach},
+    	success: function(data) { }
+  });
+}
+
+// delete team
+function deleteTeam(id){
+	console.log("just before calling ajax-delete");
+	console.log(id);		
+	window.deletethis(id);
+}
+
+function deletethis(id) {
+	console.log("running ajax-delete stuff");	
+	console.log(id);	
+  $.ajax({
+    	url: "/teams/"+id,
+			type: "delete",
     	success: function(data) { }
   });
 }

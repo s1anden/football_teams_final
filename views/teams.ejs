@@ -1,24 +1,30 @@
 <!Doctype HTML>
 <html>
 <head>
-	<link rel="stylesheet" href="style.css" />
-
+	<link rel="stylesheet" href="../style.css" />
+	
 	<title>Football Teams</title>
 </head>
 <body>
 	<div class="container">
 		<h1>Football Teams</h1>
 		<br>
-		 <% if(teams.length) { %>
-			<% teams.forEach(function(team) { %>
+		 <% var count = 0; if(teams.length) { %>
+			<% teams.forEach(function(team) { count += 1; %>
 				<h2>Name: <%= team.name %> </h2>
 				<h2>City: <%= team.city %> </h2>
 				<h2>Coach: <%= team.coach %> </h2>
+			  <form id="deleteForm" action="javascript:deleteTeam(<%=count-1%>)">
+			    <input name="Submit"  type="submit" value="Delete Team"/>
+			  </form>
+				
 				<br>
-			<% }) %>
+			<% }) %>	
 		<% } else { %>
 			<h2>There is no team by that name</h2>
 		 <% } %>
 		</div>
+		<script src="../jquery-1.9.0.js"></script>
+		<script src="../crud.js"></script>
 </body>
 </html>

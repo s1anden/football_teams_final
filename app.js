@@ -88,7 +88,31 @@ app.get('/teams/:team_id',teams.getTeam);
 app.post('/teams/:team_id',teams.editTeam);
 
 // delete one team - delete contained in body
-app.delete('/teams/:team_id',teams.deleteTeam);
+app.delete('/teams/:team_id',function(request, response) {
+	console.log("DELETING!!");
+	var url = req.url.split("/");
+	var id = url[2];
+	console.log("id is "+id);
+	if (id >= data.length) {res.render('teams',{teams:false});};
+	var team = [data[id]];  
+	console.log("team is "+team);
+	var newdata = [];
+	var temp = [];
+	while (data.length>id){
+		console.log("before pop, length of data is "+data.length);
+		temp.push(data.pop());
+	}
+  temp.pop();
+	while (temp.length>0){
+		console.log("before push, length of data is "+data.length);
+		data.push(temp.pop());
+	}	
+  writeFile("./models/database.js", "var data = " + JSON.stringify(data) + "\n exports.database = data;");
+  console.log(data);
+	res.render('main', {teams: team});
+	window.alert("Team deleted");
+
+});
 
 // players
 app.put('/teams/:team_id/players/:player_id',players.newPlayer);
