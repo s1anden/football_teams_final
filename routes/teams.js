@@ -23,7 +23,6 @@ exports.getTeam = function(req, res){
 	if (id >= data.length) {res.render('teams',{teams:false});};
 	var team = [data[id]];
   	res.render('teams', {teams: team});
-
 };
 
 exports.editTeam = function(req, res){
