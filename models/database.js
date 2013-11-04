@@ -1,2 +1,2 @@
-var data = [{"name":"49ers","players":["Colin Kaepernick","Vernon Davis","Justin Smith"],"coach":"Jim Harbaugh","city":"San Francisco"},{"name":"Steelers","players":["Ben Rothelisberger","Troy Polamalu"],"coach":"Mike Tomlin","city":"Pittsburgh"},{"name":"Steelers","players":[],"coach":"Mike Tomlin","city":"Pittsburgh"},{"name":"Lakers","players":[],"coach":"Mike Danitoiajsdf","city":"Los Angeles"}]
- exports.database = data;
+var data = [{"name":"49ers","players":["Colin Kaepernick","Vernon Davis","Justin Smith"],"coach":"Jim Harbaugh","city":"San Francisco"},{"name":"Steelers","players":["Ben Rothelisberger","Troy Polamalu"],"coach":"Mike Tomlin","city":"Pittsburgh"},{"name":"Ravens","players":[],"coach":"John Harbaugh","city":"Baltimore"}]
+exports.database = data;
