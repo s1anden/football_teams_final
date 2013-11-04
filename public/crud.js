@@ -39,23 +39,6 @@ function add(name, coach, city) {
   });
 }
 
-// delete team
-function deleteTeam(id){
-	console.log("just before calling ajax-delete");
-	console.log(id);		
-	window.deletethis(id);
-}
-
-function deletethis(id) {
-	console.log("running ajax-delete stuff");	
-	console.log(id);	
-  $.ajax({
-    	url: "/teams/"+id,
-			type: "delete",
-    	success: function(data) { }
-  });
-}
-
 // add new team
 function editTeam(index){
 	console.log("working?");
@@ -83,6 +66,23 @@ function edit(name, coach, city, index) {
 		type: "post",
     	data: {"name": name, "city": city, "coach": coach, index:index},
     	success: function(data) { location.reload() }
+  });
+}
+
+// delete team
+function deleteTeam(id){
+	console.log("just before calling ajax-delete");
+	console.log(id);		
+	window.deletethis(id);
+}
+
+function deletethis(id) {
+	console.log("running ajax-delete stuff");	
+	console.log(id);	
+  $.ajax({
+    	url: "/teams/"+id,
+		type: "delete",
+    	success: function(data) { window.alert("You sure?"); window.location.assign('/teams'); }
   });
 }
 
