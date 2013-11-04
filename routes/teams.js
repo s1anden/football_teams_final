@@ -18,7 +18,12 @@ exports.listTeams = function(req,res){
 }
 
 exports.getTeam = function(req, res){
-  
+	var url = req.url.split("/");
+	var id = url[2];
+	if (id >= data.length) {return false;};
+	var team = [data[id]];
+  	res.render('teams', {teams: team});
+
 };
 
 exports.editTeam = function(req, res){

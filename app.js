@@ -97,11 +97,5 @@ app.get('/teams/:team_id/players/:player_id',players.getPlayer);
 app.post('/teams/:team_id/players/:player_id',players.editPlayer);
 app.delete('/teams/:team_id/players/:player_id',players.deletePlayer);
 
-// app.put('/teams/:team_id/players/:player_id',players.newPlayer);
-// app.get('/teams/:team_id/players',players.listPlayers);
-// app.get('/teams/:team_id/players/:player_id',players.getPlayer);
-// app.post('/teams/:team_id/players/:player_id',players.editPlayer);
-// app.delete('/teams/:team_id/players/:player_id',players.deletePlayer);
-
 app.listen(44445);
 console.log("Express server running on port 44445");

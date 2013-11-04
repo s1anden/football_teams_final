@@ -3,7 +3,7 @@ debug = true;
 
 // Global datastore
 var teams = [];
-var players = [];
+// var players = [];
 
 // add new team
 function addTeam(){
