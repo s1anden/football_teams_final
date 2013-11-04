@@ -1,53 +1,43 @@
 <!Doctype HTML>
 <html>
 <head>
-	<link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="../style.css" />
 
-	<title>Football Teams</title>
+        <title>Football Teams</title>
 </head>
 <body>
-	<h1>NFL Teams</h1>
-	<br>
-	 <% if(teams.length) { %>
-		<% teams.forEach(function(team) { %>
-			<h2>Name: <%= team.name %> </h2>
-			<h2>City: <%= team.city %> </h2>
-			<h2>Coach: <%= team.coach %> </h2>
-		<% }) %>
-		<% if (teams.length == 1) { %>
-			<div>
-	  			<form id="editform">
-	    <div class="row">
-	      <label>Team:</label>  <input id="teamname-input" name="Team" type="text" placeholder="e.g. Steelers"/> 
-	    </div>
-	    <div class="row">
-	      <label>City:</label>  <input id="city-input" name="City" type="text" placeholder="e.g. Pittsburgh"/>
-	    </div>
-	    <div class="row">
-	      <label>Coach:</label>  <input id="coach-input" name="City" type="text" placeholder="e.g. Mike Tomlin"/>
-	    </div>
-	    <div class="row right">
-	      <input id="submitButton" name="Submit"  type="submit" value="Add Team"/>
-	    </div>
-	  </form>
-	</div> 
-		<% } %>
-	<% } else { %>
-		<h2>There is no team by that name</h2>
-	<% } %>
-	<div class="container">
-		<h1>Football Teams</h1>
-		<br>
-		 <% if(teams.length) { %>
-			<% teams.forEach(function(team) { %>
-				<h2>Name: <%= team.name %> </h2>
-				<h2>City: <%= team.city %> </h2>
-				<h2>Coach: <%= team.coach %> </h2>
-				<br>
-			<% }) %>
-		<% } else { %>
-			<h2>There is no team by that name</h2>
-		 <% } %>
-		</div>
+    <div class="container">
+        <h1>Football Teams</h1>
+        <br>
+         <% if(teams.length) { %>
+            <% teams.forEach(function(team) { %>
+                    <h2>Name: <%= team.name %> </h2>
+                    <h2>City: <%= team.city %> </h2>
+                    <h2>Coach: <%= team.coach %> </h2>
+                    <br>
+            <% }) %>
+            <% if (teams.length == 1) { %>
+                <h3>Edit Team</h3>
+                <form id="editteamform" action="javascript:editTeam(<%= index %>)">
+                    <div class="row">
+                        <label>Team:</label>  <input id="teamname-input" name="Team" type="text" value= '<%= teams[0].name %>' /> 
+                    </div>
+                    <div class="row">
+                        <label>City:</label>  <input id="city-input" name="City" type="text" value= '<%= teams[0].city %>'/>
+                    </div>
+                    <div class="row">
+                        <label>Coach:</label>  <input id="coach-input" name="City" type="text" value= '<%= teams[0].coach %>'/>
+                    </div>
+                    <div class="row right">
+                        <input id="submitButton" name="Submit"  type="submit" value="Edit Team"/>
+                    </div>
+                </form>
+            <% } %>
+        <% } else { %>
+                <h2>There is no team by that name</h2>
+        <% } %>
+    </div>
+    <script src="../jquery-1.9.0.js"></script>
+    <script src="../crud.js"></script>
 </body>
 </html>
