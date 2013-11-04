@@ -78,6 +78,7 @@ app.put("/teams", function(request, response) {
   });
 });
 
+// edit team
 app.post('/teams/:team_id',function(request,response,next){
   console.log("stuff in app.js"); 
   console.log(request.params.team_id);
@@ -106,7 +107,7 @@ app.post('/teams/:team_id',function(request,response,next){
     item: item,
     success: successful
   });
-  res.render('teams', {teams:[data[request.params.team_id]], index:request.params.team_id})
+  response.render('teams', {teams:[data[request.params.team_id]], index:request.params.team_id})
 });
 
 app.post('teams/:team_id',teams.editTeam);

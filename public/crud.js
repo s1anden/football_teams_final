@@ -65,7 +65,7 @@ function edit(name, coach, city, index) {
     	url: "/teams/" + index,
 		type: "post",
     	data: {"name": name, "city": city, "coach": coach, index:index},
-    	success: function(data) { }
+    	success: function(data) { location.reload() }
   });
 }
 
