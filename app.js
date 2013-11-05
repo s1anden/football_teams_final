@@ -110,7 +110,7 @@ app.post('/teams/:team_id',function(request,response,next){
   response.render('teams', {teams:[data[request.params.team_id]], index:request.params.team_id})
 });
 
-app.post('teams/:team_id',teams.editTeam);
+// app.post('teams/:team_id',teams.editTeam);
 
 // list teams
 app.get('/teams',teams.listTeams);
@@ -129,7 +129,6 @@ app.delete('/teams/:team_id',function(request, response) {
 	var team = [data[id]];  
 	console.log("team is "+team);
 
-	var newdata = [];
 	var temp = [];
 	while (data.length>id){
 		console.log("before pop, length of data is "+data.length);
@@ -149,7 +148,7 @@ app.delete('/teams/:team_id',function(request, response) {
 
 });
 
-// players
+// new players
 app.put('/players', function(request, response) {
   console.log("stuff in app.js"); 
 
@@ -167,6 +166,7 @@ app.put('/players', function(request, response) {
       (item.team !== undefined && teamnames.indexOf(item.team) >= 0);
 
   if (successful) {
+    console.log("successful " + data);
     for(var i=0; i<data.length; i++) {
       if (data[i].name == item.team) {
         data[i].players.push(item.name)
@@ -184,10 +184,84 @@ app.put('/players', function(request, response) {
   });
 });
 
+// get players list by team
 app.get('/teams/:team_id/players',players.listPlayers);
+
+// get players by team and id
 app.get('/teams/:team_id/players/:player_id',players.getPlayer);  
-app.post('/teams/:team_id/players/:player_id',players.editPlayer);
-app.delete('/teams/:team_id/players/:player_id',players.deletePlayer);
+
+// edit players
+app.post('/teams/:team_id/players/:player_id',function(request,response,next){
+  console.log("stuff in app.js"); 
+  console.log(request.params.team_id);
+  console.log("wtfmate" + request.params.player_id);
+
+  var teamid = request.params.team_id;
+  var playid = request.params.player_id;
+  var teamnames = [];
+  for(var i=0; i<data.length; i++) {
+      teamnames.push(data[i].name);
+  }
+
+  var item = {"name": request.body.name,
+              "players": request.body.players,
+              "coach": request.body.coach,
+              "city": request.body.city};
+  console.log(item);
+
+  var successful = 
+      (item.name !== undefined && teamnames.indexOf(item.name) >= 0) &&
+      (item.city !== undefined) &&
+      (item.coach !== undefined) && 
+      (item.players !== undefined && typeof(item.players) == "object");
+
+  if (successful) {
+    data[teamid].name = item.name;
+    data[teamid].coach = item.coach;
+    data[teamid].city = item.city;
+    data[teamid].players = item.players;
+    writeFile("./models/database.js", "var data = " + JSON.stringify(data) + "\n exports.database = data;");
+  } else {
+    item = undefined;
+  }
+
+  response.send({ 
+    item: item,
+    success: successful
+  });
+  response.send('/teams/'+teamid+'/players/'+playid, {"team":data[teamid], "playerid":playid})
+});
+
+// delete players
+app.delete('/teams/:team_id/players/:player_id',function(request, response) {
+  console.log("DELETING!!");
+
+  var teamid = request.params.team_id;
+  var playid = request.params.player_id;
+
+  if (teamid >= data.length) {response.render('teams',{teams:false});};
+  if (playid >= data[teamid].players.length) {response.render('players',{teams:false});};
+
+  var temp = [];
+  while (data[teamid].players.length > playid) {
+    console.log("before pop, length of data is "+data.length);
+    temp.push(data[teamid].players.pop());
+  }
+
+  temp.pop();
+  while (temp.length > 0){
+    console.log("before push, length of data is "+data.length);
+    data[teamid].players.push(temp.pop());
+  } 
+
+  var team = data[teamid];  
+
+  writeFile("./models/database.js", "var data = " + JSON.stringify(data) + "\n exports.database = data;");
+  console.log(data);
+  response.render('main', {teams: team});
+  // window.alert("Team deleted");
+
+});
 
 app.listen(44445);
 console.log("Express server running on port 44445");

@@ -1,0 +1,61 @@
+<!Doctype HTML>
+<html>
+<head>
+        <link rel="stylesheet" href="/../style.css" />
+
+        <title>Football Teams</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Football Teams :: Players</h1>
+        <br>
+        <% if(playerid != undefined && team.players[playerid] != undefined) { %>
+
+        	<h2>Name: <%= team.players[playerid] %> </h2>
+    		<h2>Team: <%= team.name %> </h2>
+    		<br>
+
+    		<h3>Edit Player</h3>
+                <form id="editplayerform" action="javascript:editPlayer(<%= playerid %>,<%= teamid %>)">
+                    <div class="row">
+                        <label>Name:</label>  <input id="plname-input" type="text" value= '<%= team.players[playerid] %>'> 
+                    </div>
+                    <div class="row">
+                        <input id="teamnm-input" type="hidden" value= '<%= team.name %>'>
+                    </div>
+                    <div class="row">
+                        <input id="city-input" type="hidden" value= '<%= team.city %>'>
+                    </div>
+                    <div class="row">
+                        <input id="coach-input" type="hidden" value= '<%= team.coach %>'>
+                    </div>
+                    <div class="row">
+                        <input id="players-input" type="hidden" value= <%= [team.players] %>>
+                    </div>
+                    <div class="row right">
+                        <input id="submitButton" name="Submit"  type="submit" value="Edit Player"/>
+                    </div>
+                </form>
+				<br>
+			  <form id="deleteForm" action="javascript:deletePlayer(<%= playerid %>,<%= teamid %>)">
+			    <input name="Submit"  type="submit" value="Delete Player"/>
+			  </form>
+		<% } else if(playerid != undefined && team.players[playerid] == undefined) { %>
+			<h2>The player does not exist</h2>
+        <% } else if(team.players.length) { %>
+            <% team.players.forEach(function(player) { %>
+
+                		<h2>Name: <%= player %> </h2>
+                		<h2>Team: <%= team.name %> </h2>
+                		<br>
+
+            <% }); %>
+                <br>
+        <% } else { %>
+        	<h2>No players yet for the <%=team.name%></h2>
+        <% } %>
+    </div>
+    <script src="/../jquery-1.9.0.js"></script>
+    <script src="/../crud.js"></script>
+</body>
+</html>

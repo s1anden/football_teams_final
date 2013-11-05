@@ -1,2 +1,2 @@
-var data = [{"name":"49erss","players":[],"coach":"Jim Harbaugh","city":"San Francisco"},{"name":"Steelers","players":["Anthony Corletti"],"coach":"Mike Tomlin","city":"Pittsburgh"},{"name":"Ravens","players":[],"coach":"John Harbaugh","city":"Baltimore"}]
+var data = [{"name":"49ers","players":["dude22"],"coach":"Jim Example","city":"San Francisco"},{"name":"Steelers","players":["Anthony Corletti"],"coach":"Mike Tomlin","city":"Pittsburgh"},{"name":"Ravens","players":["example"],"coach":"John Harbaugh","city":"Baltimore"},{"name":"example","players":[],"coach":"example","city":"example"}]
  exports.database = data;
